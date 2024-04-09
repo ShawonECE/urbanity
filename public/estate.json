@@ -1,0 +1,156 @@
+[
+    {
+        "id": 1,
+        "estate_title": "Luxury Single-family Home",
+        "segment_name": "Single-family homes",
+        "description": "Beautiful single-family home with spacious living areas and modern amenities.",
+        "price": "$1,200,000",
+        "status": "sale",
+        "area": "3000 sq ft",
+        "location": "Suburban neighborhood, City A",
+        "image": "https://i.ibb.co/4tqTf6s/house1.png",
+        "facilities": [
+            "living room",
+            "swimming pool",
+            "garden",
+            "garage"
+        ]
+    },
+    {
+        "id": 2,
+        "estate_title": "Townhouse in Downtown",
+        "segment_name": "Townhouses",
+        "description": "Charming townhouse located in the heart of downtown, offering convenience and urban lifestyle.",
+        "price": "$800,000",
+        "status": "sale",
+        "area": "2000 sq ft",
+        "location": "Downtown, City B",
+        "image": "https://i.ibb.co/QmP8bYf/house2.png",
+        "facilities": [
+            "living room",
+            "kitchen",
+            "terrace",
+            "parking"
+        ]
+    },
+    {
+        "id": 3,
+        "estate_title": "Modern City Apartment",
+        "segment_name": "Apartments",
+        "description": "Sleek and modern apartment in a high-rise building with stunning city views.",
+        "price": "$2,500/month",
+        "status": "rent",
+        "area": "1200 sq ft",
+        "location": "City Center, City C",
+        "image": "https://i.ibb.co/VBjK3hd/house3.png",
+        "facilities": [
+            "living room",
+            "gym",
+            "swimming pool",
+            "security"
+        ]
+    },
+    {
+        "id": 4,
+        "estate_title": "Student Housing Complex",
+        "segment_name": "Student housing",
+        "description": "Purpose-built student housing complex offering comfortable living spaces and study areas.",
+        "price": "$600/bed/month",
+        "status": "rent",
+        "area": "Shared facilities",
+        "location": "Near University Campus, City D",
+        "image": "https://i.ibb.co/bNGxJp4/house4.png",
+        "facilities": [
+            "individual bedrooms",
+            "study lounge",
+            "fitness center",
+            "laundry room"
+        ]
+    },
+    {
+        "id": 5,
+        "estate_title": "Senior Living Community",
+        "segment_name": "Senior living communities",
+        "description": "Retirement community providing care and amenities tailored to senior residents' needs.",
+        "price": "Starting at $3,000/month",
+        "status": "rent",
+        "area": "Varies",
+        "location": "Quiet Suburb, City E",
+        "image": "https://i.ibb.co/D79QKNq/house5.png",
+        "facilities": [
+            "community center",
+            "gardens",
+            "medical facilities",
+            "restaurant"
+        ]
+    },
+    {
+        "id": 6,
+        "estate_title": "Cozy Vacation Rental",
+        "segment_name": "Vacation rentals",
+        "description": "Cozy vacation rental perfect for a relaxing getaway with family or friends.",
+        "price": "$200/night",
+        "status": "rent",
+        "area": "1000 sq ft",
+        "location": "Beachfront, City F",
+        "image": "https://i.ibb.co/jgsgyJ2/house6.png",
+        "facilities": [
+            "beach access",
+            "fully furnished",
+            "BBQ area",
+            "WiFi"
+        ]
+    },
+    {
+        "id": 7,
+        "estate_title": "Lakefront Villa",
+        "segment_name": "Single-family homes",
+        "description": "Stunning lakefront villa with panoramic views, perfect for luxury living.",
+        "price": "$2,800,000",
+        "status": "sale",
+        "area": "5000 sq ft",
+        "location": "Lakefront, City G",
+        "image": "https://i.ibb.co/XthHGyj/house7.png",
+        "facilities": [
+            "private dock",
+            "home theater",
+            "wine cellar",
+            "guest house"
+        ]
+    },
+    {
+        "id": 8,
+        "estate_title": "Modern Loft Apartment",
+        "segment_name": "Apartments",
+        "description": "Spacious loft apartment with industrial chic design and upscale amenities.",
+        "price": "$3,500/month",
+        "status": "rent",
+        "area": "1800 sq ft",
+        "location": "Artsy District, City H",
+        "image": "https://i.ibb.co/q5nmgJD/house8.png",
+        "facilities": [
+            "open floor plan",
+            "exposed brick walls",
+            "fitness center",
+            "rooftop terrace"
+        ]
+    },
+    {
+        "id": 9,
+        "estate_title": "Retirement Resort Condo",
+        "segment_name": "Senior living communities",
+        "description": "Luxurious resort-style condo for retirees seeking an active lifestyle and community.",
+        "price": "$400,000",
+        "status": "sale",
+        "area": "1500 sq ft",
+        "location": "Retirement Community, City I",
+        "image": "https://i.ibb.co/bHqLhf0/house9.png",
+        "facilities": [
+            "golf course access",
+            "spa",
+            "restaurant",
+            "24-hour concierge"
+        ]
+    }
+]
+  
