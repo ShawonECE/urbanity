@@ -16,6 +16,7 @@ import Register from './components/Register';
 import EstateDetails from './components/EstateDetails.jsx';
 import About from './components/Contact.jsx';
 import Contact from './components/Contact.jsx';
+import AuthProvider from './components/AuthProvider.jsx';
 
 const router = createBrowserRouter([
   {
@@ -58,8 +59,10 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <HelmetProvider>
-      <RouterProvider router={router} />
-    </HelmetProvider>
+    <AuthProvider>
+      <HelmetProvider>
+        <RouterProvider router={router} />
+      </HelmetProvider>
+    </AuthProvider>
   </React.StrictMode>,
 )
