@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { LuUserCircle } from "react-icons/lu";
 
 const NavBar = () => {
@@ -11,7 +11,7 @@ const NavBar = () => {
                     </div>
                     <ul tabIndex={0} className="text-base menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 z-10">
                         <li><NavLink to="/">Home</NavLink></li>
-                        <li><NavLink to="/login">Log In</NavLink></li>
+                        <li><NavLink to="/about">About us</NavLink></li>
                         <li><NavLink to="/update-profile">Update Profile</NavLink></li>
                     </ul>
                 </div>
@@ -20,7 +20,7 @@ const NavBar = () => {
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1 text-base">
                     <li><NavLink to="/">Home</NavLink></li>
-                    <li><NavLink to="/login">Log In</NavLink></li>
+                    <li><NavLink to="/contact">Contact us</NavLink></li>
                     <li><NavLink to="/update-profile">Update Profile</NavLink></li>
                 </ul>
             </div>
@@ -30,8 +30,8 @@ const NavBar = () => {
                         <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
                     </div>
                 </div>
-                {/* <LuUserCircle className="text-[32px]" /> */}
-                <NavLink to='/profile'><button className="btn">Profile</button></NavLink>
+                <LuUserCircle className="text-[32px]" />
+                <Link to='/login'><button className="btn">Log In</button></Link>
             </div>
         </div>
     );

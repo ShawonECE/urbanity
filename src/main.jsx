@@ -4,6 +4,7 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import { HelmetProvider } from 'react-helmet-async';
 import Root from './Root.jsx';
 import Home from './components/Home.jsx';
 import './index.css';
@@ -12,6 +13,9 @@ import Profile from './components/Profile';
 import Update from './components/Update';
 import Login from './components/Login.jsx';
 import Register from './components/Register';
+import EstateDetails from './components/EstateDetails.jsx';
+import About from './components/Contact.jsx';
+import Contact from './components/Contact.jsx';
 
 const router = createBrowserRouter([
   {
@@ -39,12 +43,23 @@ const router = createBrowserRouter([
         path: "/register",
         element: <Register />,
       },
+      {
+        path: "/details/:id",
+        element: <EstateDetails />,
+        loader: () => fetch('https://shawonece.github.io/fake-data/estate.json')
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
     ],
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <HelmetProvider>
+      <RouterProvider router={router} />
+    </HelmetProvider>
   </React.StrictMode>,
 )
