@@ -1,7 +1,15 @@
 import { Link, NavLink } from "react-router-dom";
 import { LuUserCircle } from "react-icons/lu";
+import { useContext } from "react";
+import { AuthContext } from "./AuthProvider";
 
 const NavBar = () => {
+    const {user, logOutUser} = useContext(AuthContext);
+    const handleLogOut = () => {
+        logOutUser()
+        .then(res => console.log(res))
+        .catch(error => console.error(error));
+    };
     return (
         <div className="navbar bg-base-100 px-0">
             <div className="navbar-start">
@@ -25,13 +33,22 @@ const NavBar = () => {
                 </ul>
             </div>
             <div className="navbar-end gap-3">
-                <div className="avatar">
-                    <div className="w-8 rounded-full">
-                        <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-                    </div>
-                </div>
-                <LuUserCircle className="text-[32px]" />
-                <Link to='/login'><button className="btn">Log In</button></Link>
+                {
+                    user && user.photoURL ? 
+                        <div className="avatar">
+                            <div className="w-8 rounded-full">
+                                <img src={user.photoURL} />
+                            </div>
+                        </div>
+                        :
+                        <LuUserCircle className="text-[32px]" />
+                }
+                {
+                    user ? 
+                        <button onClick={handleLogOut} className="btn">Log Out</button>
+                        :
+                        <Link to='/login'><button className="btn">Log In</button></Link>
+                }
             </div>
         </div>
     );

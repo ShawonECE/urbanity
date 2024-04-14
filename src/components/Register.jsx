@@ -1,7 +1,15 @@
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
 
 const Register = () => {
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm();
+
+    const onSubmit = (data) => console.log(data);
     return (
         <div className="hero min-h-screen bg-base-200 rounded-2xl">
             <Helmet>
@@ -12,30 +20,50 @@ const Register = () => {
                     <h1 className="text-5xl font-bold">Register to create new account</h1>
                 </div>
                 <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                    <form className="card-body">
+                    <form className="card-body" onSubmit={handleSubmit(onSubmit)} noValidate>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Name</span>
                             </label>
-                            <input type="text" placeholder="Enter your name" className="input input-bordered" required />
+                            <input type="text" placeholder="Enter your name" className="input input-bordered" {...register("name", { 
+                                required: 'Name is required',
+                                pattern: {
+                                    value: /^[a-zA-Z]+$/,
+                                    message: "Name can't contain digits or special characters"
+                                } })} />
+                            <p className="text-red-500 mt-2">{errors.name?.message}</p>
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input type="email" placeholder="Enter your email" className="input input-bordered" required />
+                            <input type="email" placeholder="Enter your email" className="input input-bordered" {...register("email", { 
+                                required: 'Email is required',
+                                pattern: {
+                                    value: /^[\w-]+(?:\.[\w-]+)*@(?:[\w-]+\.)+[a-zA-Z]{2,}$/,
+                                    message: 'Please enter a valid email address'
+                                } })} />
+                            <p className="text-red-500 mt-2">{errors.email?.message}</p>
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Photo URL</span>
                             </label>
-                            <input type="url" placeholder="Enter your photo url" className="input input-bordered" required />
+                            <input type="url" placeholder="Enter your photo url" className="input input-bordered" {...register("photoURL", { required: 'Photo URL is required' })} />
+                            <p className="text-red-500 mt-2">{errors.photoURL?.message}</p>
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="password" placeholder="Enter password" className="input input-bordered" required />
+                            <input type="password" placeholder="Enter password" className="input input-bordered" {...register("password", {
+                                required: 'Password is required', 
+                                pattern: {
+                                    value: /(?=.*[a-z])(?=.*[A-Z]).{6,}/,
+                                    message: 'Password is invalid',
+                                }
+                            })} />
+                            <p className="text-red-500 mt-2">{errors.password?.message}</p>
                         </div>
                         <div className="form-control mt-6">
                             <button type="submit" className="btn bg-slate-800 text-white">Register</button>
