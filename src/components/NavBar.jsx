@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { AuthContext } from "./AuthProvider";
 
 const NavBar = () => {
-    const {user, logOutUser} = useContext(AuthContext);
+    const {user, logOutUser, loading} = useContext(AuthContext);
     const handleLogOut = () => {
         logOutUser()
         .then(res => console.log(res))
@@ -34,20 +34,28 @@ const NavBar = () => {
             </div>
             <div className="navbar-end gap-3">
                 {
-                    user && user.photoURL ? 
+                    !loading && (user?.photoURL ? 
                         <div className="avatar">
                             <div className="w-8 rounded-full">
                                 <img src={user.photoURL} />
                             </div>
                         </div>
                         :
-                        <LuUserCircle className="text-[32px]" />
+                        <LuUserCircle className="text-[32px]" />)
                 }
                 {
-                    user ? 
+                    loading && 
+                    <div className="skeleton w-8 h-8 rounded-full shrink-0"></div>
+                }
+                {
+                    !loading && (user ?
                         <button onClick={handleLogOut} className="btn">Log Out</button>
                         :
-                        <Link to='/login'><button className="btn">Log In</button></Link>
+                        <Link to='/login'><button className="btn">Log In</button></Link>)
+                }
+                {
+                    loading &&
+                    <div className="skeleton w-24 h-12"></div>
                 }
             </div>
         </div>

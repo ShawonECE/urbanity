@@ -1,4 +1,4 @@
-import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
+import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
 import PropTypes from 'prop-types';
 import { createContext, useEffect, useState } from 'react';
 import auth from './../firebaseConfig';
@@ -9,31 +9,42 @@ const AuthProvider = ({children}) => {
     const googleProvider = new GoogleAuthProvider();
     const githubProvider = new GithubAuthProvider();
     const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true);
     const signInWithGoogle = () => {
+        setLoading(true);
         return signInWithPopup(auth, googleProvider);
     };
     const signInWithGithub = () => {
+        setLoading(true);
         return signInWithPopup(auth, githubProvider);
     };
     const createUser = (email, password) => {
+        setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password);
     };
     const signInUser = (email, password) => {
+        setLoading(true);
         return signInWithEmailAndPassword(auth, email, password);
     };
     const logOutUser = () => {
+        setLoading(true);
         return signOut(auth);
+    };
+    const updateInfo = (info) => {
+        setLoading(true);
+        return updateProfile(auth.currentUser, info);
     };
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
+            setLoading(false);
         });
 
         return () => {
             unSubscribe();
         }
-    }, []);
-    const AuthInfo = {user, setUser, signInWithGoogle, signInWithGithub, createUser, signInUser, logOutUser};
+    }, [user]);
+    const AuthInfo = {user, loading, setUser, signInWithGoogle, signInWithGithub, createUser, signInUser, logOutUser, updateInfo};
     return (
         <AuthContext.Provider value={AuthInfo}>
             {children}

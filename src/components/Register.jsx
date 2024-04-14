@@ -1,15 +1,30 @@
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { AuthContext } from "./AuthProvider";
+import { useContext } from "react";
 
 const Register = () => {
+    const {createUser, updateInfo} = useContext(AuthContext);
     const {
         register,
         handleSubmit,
         formState: { errors },
     } = useForm();
 
-    const onSubmit = (data) => console.log(data);
+    const onSubmit = (data) => {
+        const {name, email, password, photoURL} = data;
+        const extraInfo = {
+            displayName: name,
+            photoURL: photoURL
+        };
+        createUser(email, password)
+        .then(result => {
+            updateInfo(extraInfo)
+        })
+        .then(res => location.reload())
+        .catch(error => console.error(error));
+    };
     return (
         <div className="hero min-h-screen bg-base-200 rounded-2xl">
             <Helmet>
@@ -28,7 +43,7 @@ const Register = () => {
                             <input type="text" placeholder="Enter your name" className="input input-bordered" {...register("name", { 
                                 required: 'Name is required',
                                 pattern: {
-                                    value: /^[a-zA-Z]+$/,
+                                    value: /^[a-zA-Z\s]+$/,
                                     message: "Name can't contain digits or special characters"
                                 } })} />
                             <p className="text-red-500 mt-2">{errors.name?.message}</p>
@@ -60,7 +75,7 @@ const Register = () => {
                                 required: 'Password is required', 
                                 pattern: {
                                     value: /(?=.*[a-z])(?=.*[A-Z]).{6,}/,
-                                    message: 'Password is invalid',
+                                    message: 'Password must include 1 uppercase and 1 lowercase letter and be 6+ characters long',
                                 }
                             })} />
                             <p className="text-red-500 mt-2">{errors.password?.message}</p>
