@@ -3,9 +3,11 @@ import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "./AuthProvider";
 import { useContext } from "react";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Register = () => {
-    const {createUser, updateInfo} = useContext(AuthContext);
+    const {createUser, updateInfo, user} = useContext(AuthContext);
     const {
         register,
         handleSubmit,
@@ -19,11 +21,14 @@ const Register = () => {
             photoURL: photoURL
         };
         createUser(email, password)
-        .then(result => {
-            updateInfo(extraInfo)
-        })
-        .then(res => location.reload())
-        .catch(error => console.error(error));
+            .then(result => {
+                updateInfo(extraInfo)
+            })
+            .then(res => {
+                toast('You have successfully registered');
+                location.reload();
+            })
+            .catch(error => console.error(error));
     };
     return (
         <div className="hero min-h-screen bg-base-200 rounded-2xl">
@@ -81,7 +86,7 @@ const Register = () => {
                             <p className="text-red-500 mt-2">{errors.password?.message}</p>
                         </div>
                         <div className="form-control mt-6">
-                            <button type="submit" className="btn bg-slate-800 text-white">Register</button>
+                            <button type="submit" className="btn bg-slate-800 text-white" disabled={user}>Register</button>
                         </div>
                         <p className="text-center">
                             <Link to='/login' className="label-text-alt link link-hover">Already have an account?</Link>
@@ -89,6 +94,7 @@ const Register = () => {
                     </form>
                 </div>
             </div>
+            <ToastContainer autoClose={2500}/>
         </div>
     );
 };

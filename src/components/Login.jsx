@@ -4,6 +4,8 @@ import { FaGoogle, FaGithub } from "react-icons/fa";
 import { useContext } from "react";
 import { AuthContext } from "./AuthProvider";
 import { useForm } from "react-hook-form";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
     const {
@@ -13,31 +15,49 @@ const Login = () => {
     } = useForm();
     const location = useLocation();
     const navigate = useNavigate();
-    const { signInWithGoogle, signInWithGithub, signInUser } = useContext(AuthContext);
+    const { signInWithGoogle, signInWithGithub, signInUser, setLoading, user } = useContext(AuthContext);
     const onSubmit = (data) => {
         const { email, password } = data;
         signInUser(email, password)
             .then(result => {
-                navigate(location.state ? location.state : '/');
-                console.log('You have successfully signed in')
+                if (location.state) {
+                    navigate(location.state);
+                } else {
+                    toast('You have successfully logged in');
+                }
             })
-            .catch(error => console.error(error));
+            .catch(error => {
+                setLoading(false);
+                toast('Log in failed');
+            });
     };
     const handleGoogleSignIn = () => {
         signInWithGoogle()
         .then(result => {
-            // alert('You have successfully signed in with Google');
-            navigate(location.state ? location.state : '/');
+            if (location.state) {
+                navigate(location.state);
+            } else {
+                toast('You have successfully logged in');
+            }
         })
-        .catch(error => console.error(error))
+        .catch(error => {
+            setLoading(false);
+            toast('Log in failed');
+        })
     };
     const handleGithubSignIn = () => {
         signInWithGithub()
         .then(result => {
-            navigate(location.state ? location.state : '/');
-            console.log('You have successfully signed in with Github');
+            if (location.state) {
+                navigate(location.state);
+            } else {
+                toast('You have successfully logged in');
+            }
         })
-        .catch(error => console.error(error))
+        .catch(error => {
+            setLoading(false);
+            toast('Log in failed');
+        })
     };
     return (
         <div className="hero min-h-screen bg-base-200 rounded-2xl">
@@ -72,16 +92,17 @@ const Login = () => {
                             <p className="text-red-500 mt-2">{errors.password?.message}</p>
                         </div>
                         <div className="form-control mt-6">
-                            <button type="submit" className="btn bg-slate-800 text-white">Log in</button>
+                            <button type="submit" className="btn bg-slate-800 text-white" disabled={user}>Log in</button>
                         </div>                        
                     </form>
-                    <button onClick={handleGoogleSignIn} className="btn mx-8 -mt-6 mb-2"><FaGoogle />Log in with Google</button>
-                    <button onClick={handleGithubSignIn} className="btn mx-8 mb-3"><FaGithub />Log in with GitHub</button>
+                    <button onClick={handleGoogleSignIn} className="btn mx-8 -mt-6 mb-2" disabled={user}><FaGoogle />Log in with Google</button>
+                    <button onClick={handleGithubSignIn} className="btn mx-8 mb-3" disabled={user}><FaGithub />Log in with GitHub</button>
                     <p className="text-center mb-8">
                         <Link to='/register' className="label-text-alt link link-hover">Don&apos;t have an account? Register now</Link>
                     </p>
                 </div>
             </div>
+            <ToastContainer autoClose={2500}/>
         </div>
     );
 };
