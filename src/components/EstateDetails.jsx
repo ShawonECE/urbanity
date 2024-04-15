@@ -6,7 +6,6 @@ const EstateDetails = () => {
     const estates = useLoaderData();
     const {id} = useParams();
     const estate = estates.find(estate => estate.id == id);
-    console.log(estate);
     const {estate_title, segment_name, long_description, price, status, area, location, image, facilities} = estate;
     return (
         <div className="mt-6">

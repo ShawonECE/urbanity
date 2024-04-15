@@ -9,14 +9,13 @@ import Root from './Root.jsx';
 import Home from './components/Home.jsx';
 import './index.css';
 import ErrorPage from './components/ErrorPage';
-import Profile from './components/Profile';
 import Update from './components/Update';
 import Login from './components/Login.jsx';
 import Register from './components/Register';
 import EstateDetails from './components/EstateDetails.jsx';
-import About from './components/Contact.jsx';
 import Contact from './components/Contact.jsx';
 import AuthProvider from './components/AuthProvider.jsx';
+import Private from './components/Private.jsx';
 
 const router = createBrowserRouter([
   {
@@ -29,12 +28,8 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/profile",
-        element: <Profile />,
-      },
-      {
         path: "/update-profile",
-        element: <Update />,
+        element: <Private><Update /></Private>,
       },
       {
         path: "/login",
@@ -46,12 +41,12 @@ const router = createBrowserRouter([
       },
       {
         path: "/details/:id",
-        element: <EstateDetails />,
+        element: <Private><EstateDetails /></Private>,
         loader: () => fetch('https://shawonece.github.io/fake-data/estate.json')
       },
       {
         path: "/contact",
-        element: <Contact />,
+        element: <Private><Contact /></Private>,
       },
     ],
   },

@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { useContext } from "react";
 import { AuthContext } from "./AuthProvider";
@@ -11,24 +11,30 @@ const Login = () => {
         handleSubmit,
         formState: { errors },
     } = useForm();
-    
+    const location = useLocation();
+    const navigate = useNavigate();
     const { signInWithGoogle, signInWithGithub, signInUser } = useContext(AuthContext);
     const onSubmit = (data) => {
-        const {email, password} = data;
+        const { email, password } = data;
         signInUser(email, password)
-        .then(result => console.log('You have successfully signed in'))
-        .catch(error => console.error(error));
+            .then(result => {
+                navigate(location.state ? location.state : '/');
+                console.log('You have successfully signed in')
+            })
+            .catch(error => console.error(error));
     };
     const handleGoogleSignIn = () => {
         signInWithGoogle()
         .then(result => {
-            console.log('You have successfully signed in with Google');
+            // alert('You have successfully signed in with Google');
+            navigate(location.state ? location.state : '/');
         })
         .catch(error => console.error(error))
     };
     const handleGithubSignIn = () => {
         signInWithGithub()
         .then(result => {
+            navigate(location.state ? location.state : '/');
             console.log('You have successfully signed in with Github');
         })
         .catch(error => console.error(error))
