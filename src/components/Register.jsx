@@ -2,12 +2,14 @@ import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "./AuthProvider";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 
 const Register = () => {
     const {createUser, updateInfo, user} = useContext(AuthContext);
+    const [showPassword, setShowPassword] = useState(false);
     const {
         register,
         handleSubmit,
@@ -26,7 +28,7 @@ const Register = () => {
             })
             .then(res => {
                 toast('You have successfully registered');
-                location.reload();
+                //location.reload();
             })
             .catch(error => console.error(error));
     };
@@ -72,17 +74,23 @@ const Register = () => {
                             <input type="url" placeholder="Enter your photo url" className="input input-bordered" {...register("photoURL", { required: 'Photo URL is required' })} />
                             <p className="text-red-500 mt-2">{errors.photoURL?.message}</p>
                         </div>
-                        <div className="form-control">
+                        <div className="form-control relative">
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="password" placeholder="Enter password" className="input input-bordered" {...register("password", {
+                            <input type={showPassword ? 'text' : 'password'} placeholder="Enter password" className="input input-bordered" {...register("password", {
                                 required: 'Password is required', 
                                 pattern: {
                                     value: /(?=.*[a-z])(?=.*[A-Z]).{6,}/,
                                     message: 'Password must include 1 uppercase and 1 lowercase letter and be 6+ characters long',
                                 }
                             })} />
+                            {
+                                showPassword ? 
+                                <FaRegEyeSlash onClick={() => setShowPassword(!showPassword)} className="absolute right-4 bottom-6 cursor-pointer text-lg" />
+                                :
+                                <FaRegEye onClick={() => setShowPassword(!showPassword)} className="absolute right-4 bottom-6 cursor-pointer text-lg" />
+                            }
                             <p className="text-red-500 mt-2">{errors.password?.message}</p>
                         </div>
                         <div className="form-control mt-6">

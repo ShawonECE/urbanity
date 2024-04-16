@@ -1,13 +1,15 @@
 import { Helmet } from "react-helmet-async";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaGoogle, FaGithub } from "react-icons/fa";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "./AuthProvider";
 import { useForm } from "react-hook-form";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 
 const Login = () => {
+    const [showPassword, setShowPassword] = useState(false);
     const {
         register,
         handleSubmit,
@@ -82,13 +84,19 @@ const Login = () => {
                                 } })} />
                             <p className="text-red-500 mt-2">{errors.email?.message}</p>
                         </div>
-                        <div className="form-control">
+                        <div className="form-control relative">
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="password" placeholder="Enter password" className="input input-bordered" {...register("password", {
+                            <input type={showPassword ? 'text' : 'password'} placeholder="Enter password" className="input input-bordered" {...register("password", {
                                 required: 'Password is required', 
                             })} />
+                            {
+                                showPassword ? 
+                                <FaRegEyeSlash onClick={() => setShowPassword(!showPassword)} className="absolute right-4 bottom-6 cursor-pointer text-lg" />
+                                :
+                                <FaRegEye onClick={() => setShowPassword(!showPassword)} className="absolute right-4 bottom-6 cursor-pointer text-lg" />
+                            }
                             <p className="text-red-500 mt-2">{errors.password?.message}</p>
                         </div>
                         <div className="form-control mt-6">

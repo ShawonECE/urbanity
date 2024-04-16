@@ -34,7 +34,7 @@ const NavBar = () => {
             </div>
             <div className="navbar-end gap-3">
                 {
-                    !loading && (user?.photoURL ? 
+                    !loading && (user?.photoURL? 
                         <div className="avatar tooltip tooltip-bottom" data-tip={user.displayName}>
                             <div className="w-8 rounded-full">
                                 <img src={user.photoURL} />
