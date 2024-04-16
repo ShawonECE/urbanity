@@ -16,6 +16,10 @@ import EstateDetails from './components/EstateDetails.jsx';
 import Contact from './components/Contact.jsx';
 import AuthProvider from './components/AuthProvider.jsx';
 import Private from './components/Private.jsx';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
+AOS.init();
 
 const router = createBrowserRouter([
   {

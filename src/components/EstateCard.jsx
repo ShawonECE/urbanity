@@ -8,7 +8,7 @@ const EstateCard = ({estate}) => {
     };
     const {estate_title, price, status, area, image, description, id} = estate;
     return (
-        <div className="card bg-base-100 shadow-xl">
+        <div data-aos="zoom-in-up" data-aos-duration="1500" className="card bg-base-100 shadow-xl">
             <figure><img src={image} alt="Shoes" /></figure>
             <div className="card-body">
                 <h2 className="card-title font-bold">

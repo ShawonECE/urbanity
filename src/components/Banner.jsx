@@ -9,6 +9,7 @@ import 'swiper/css/effect-fade';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
+
 const Banner = () => {
     return (
         <Swiper className='rounded-3xl mt-6'
@@ -20,6 +21,7 @@ const Banner = () => {
             autoHeight={true}
             pagination={{ clickable: true }}
             effect="fade"
+            data-aos="fade-right" data-aos-duration="2000"
         >
             <SwiperSlide><img src={slide1} alt="" /></SwiperSlide>
             <SwiperSlide><img src={slide2} alt="" /></SwiperSlide>

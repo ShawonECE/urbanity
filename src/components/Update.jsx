@@ -19,9 +19,11 @@ const Update = () => {
         updateInfo(data)
         .then(res => {
             setLoading(false);
-            console.log('profile updated');
         })
-        .catch(error => console.error(error));
+        .catch(error => {
+            setLoading(false);
+            console.error(error)
+        });
     };
     return (
         <div>

@@ -5,9 +5,11 @@ import Footer from './components/Footer';
 function Root() {
 
   return (
-    <div className="container mx-auto px-4">
-      <NavBar></NavBar>
-      <Outlet></Outlet>
+    <div>
+      <div className="container mx-auto px-4">
+        <NavBar></NavBar>
+        <Outlet></Outlet>
+      </div>
       <Footer />
     </div>
   )
