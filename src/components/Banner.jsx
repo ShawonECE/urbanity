@@ -21,7 +21,7 @@ const Banner = () => {
             autoHeight={true}
             pagination={{ clickable: true }}
             effect="fade"
-            data-aos="fade-right" data-aos-duration="2000"
+            data-aos="fade-right" data-aos-duration="3000"
         >
             <SwiperSlide><img src={slide1} alt="" /></SwiperSlide>
             <SwiperSlide><img src={slide2} alt="" /></SwiperSlide>
