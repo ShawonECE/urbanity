@@ -2,12 +2,12 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyC2b_I0Pbcf_gQR0XyFlkzPqAy5z3Z35I8",
-  authDomain: "urbanity-937ae.firebaseapp.com",
-  projectId: "urbanity-937ae",
-  storageBucket: "urbanity-937ae.appspot.com",
-  messagingSenderId: "649222862563",
-  appId: "1:649222862563:web:9a3376d97b1736b1deb7d6"
+  apiKey: import.meta.env.API_KEY,
+  authDomain: import.meta.env.AUTH_DOMAIN,
+  projectId: import.meta.env.PROJECT_ID,
+  storageBucket: import.meta.env.STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.MESSAGING_SENDER_ID,
+  appId: import.meta.env.APP_ID
 };
 
 const app = initializeApp(firebaseConfig);
