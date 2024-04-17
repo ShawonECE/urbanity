@@ -26,6 +26,9 @@ const Login = () => {
                     navigate(location.state);
                 } else {
                     toast('You have successfully logged in');
+                    setTimeout(() => {
+                        navigate('/');
+                    }, 2000);
                 }
             })
             .catch(error => {
@@ -40,6 +43,9 @@ const Login = () => {
                 navigate(location.state);
             } else {
                 toast('You have successfully logged in');
+                setTimeout(() => {
+                    navigate('/');
+                }, 2000);
             }
         })
         .catch(error => {
@@ -54,6 +60,9 @@ const Login = () => {
                 navigate(location.state);
             } else {
                 toast('You have successfully logged in');
+                setTimeout(() => {
+                    navigate('/');
+                }, 2000);
             }
         })
         .catch(error => {
@@ -106,11 +115,11 @@ const Login = () => {
                     <button onClick={handleGoogleSignIn} className="btn mx-8 -mt-6 mb-2" disabled={user}><FaGoogle />Log in with Google</button>
                     <button onClick={handleGithubSignIn} className="btn mx-8 mb-3" disabled={user}><FaGithub />Log in with GitHub</button>
                     <p className="text-center mb-8">
-                        <Link to='/register' className="label-text-alt link link-hover">Don&apos;t have an account? Register now</Link>
+                        <Link to='/register' state={location.state} className="label-text-alt link link-hover">Don&apos;t have an account? Register now</Link>
                     </p>
                 </div>
             </div>
-            <ToastContainer autoClose={2500}/>
+            <ToastContainer autoClose={2000}/>
         </div>
     );
 };

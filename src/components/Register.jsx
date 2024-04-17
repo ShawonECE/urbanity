@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "./AuthProvider";
 import { useContext, useState } from "react";
@@ -8,8 +8,10 @@ import 'react-toastify/dist/ReactToastify.css';
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 
 const Register = () => {
-    const {createUser, updateInfo, user} = useContext(AuthContext);
+    const {createUser, updateInfo, user, logOutUser} = useContext(AuthContext);
     const [showPassword, setShowPassword] = useState(false);
+    const navigate = useNavigate();
+    const location = useLocation();
     const {
         register,
         handleSubmit,
@@ -27,8 +29,12 @@ const Register = () => {
                 updateInfo(extraInfo)
             })
             .then(res => {
-                toast('You have successfully registered');
-                //location.reload();
+                toast('Registration successful. You will be redirected to the Log in page');
+                logOutUser();
+                setTimeout(() => {
+                    navigate('/login', {state: location.state ? location.state : null});
+                    //{state: {from: '/register'}}
+                }, 3000);
             })
             .catch(error => console.error(error));
     };
@@ -102,7 +108,7 @@ const Register = () => {
                     </form>
                 </div>
             </div>
-            <ToastContainer autoClose={2500}/>
+            <ToastContainer autoClose={2800}/>
         </div>
     );
 };

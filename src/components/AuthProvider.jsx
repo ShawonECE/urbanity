@@ -34,16 +34,8 @@ const AuthProvider = ({children}) => {
         setLoading(true);
         return updateProfile(auth.currentUser, info);
     };
-    async function getUserPhotoUrl() {
-        const user = auth.currentUser;
-        if (user) {
-            return user.photoURL;
-        } else {
-            return null;
-        }
-    }
     useEffect(() => {
-        const unSubscribe = onAuthStateChanged(auth, async currentUser => {
+        const unSubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
             setLoading(false);
         });
