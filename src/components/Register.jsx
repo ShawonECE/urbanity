@@ -29,12 +29,11 @@ const Register = () => {
                 updateInfo(extraInfo)
             })
             .then(res => {
-                toast('Registration successful. You will be redirected to the Log in page');
+                toast('Registration successful');
                 logOutUser();
                 setTimeout(() => {
-                    navigate('/login', {state: location.state ? location.state : null});
-                    //{state: {from: '/register'}}
-                }, 3000);
+                    navigate('/login', {state: {from: '/register', to: location.state ? location.state : null}});
+                }, 2500);
             })
             .catch(error => console.error(error));
     };
@@ -108,7 +107,7 @@ const Register = () => {
                     </form>
                 </div>
             </div>
-            <ToastContainer autoClose={2800}/>
+            <ToastContainer autoClose={2500}/>
         </div>
     );
 };

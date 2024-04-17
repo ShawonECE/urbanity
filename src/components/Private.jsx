@@ -20,7 +20,7 @@ const Private = ({children}) => {
         if (user) {
             return children;
         } else {
-            return <Navigate state={location.pathname} to='/login'></Navigate>;
+            return <Navigate state={{to: location.pathname}} to='/login'></Navigate>;
         }
     }
 };

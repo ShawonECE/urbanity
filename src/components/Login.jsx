@@ -22,8 +22,8 @@ const Login = () => {
         const { email, password } = data;
         signInUser(email, password)
             .then(result => {
-                if (location.state) {
-                    navigate(location.state);
+                if (location.state.to) {
+                    navigate(location.state.to);
                 } else {
                     toast('You have successfully logged in');
                     setTimeout(() => {
@@ -39,8 +39,8 @@ const Login = () => {
     const handleGoogleSignIn = () => {
         signInWithGoogle()
         .then(result => {
-            if (location.state) {
-                navigate(location.state);
+            if (location.state.to) {
+                navigate(location.state.to);
             } else {
                 toast('You have successfully logged in');
                 setTimeout(() => {
@@ -56,8 +56,8 @@ const Login = () => {
     const handleGithubSignIn = () => {
         signInWithGithub()
         .then(result => {
-            if (location.state) {
-                navigate(location.state);
+            if (location.state.to) {
+                navigate(location.state.to);
             } else {
                 toast('You have successfully logged in');
                 setTimeout(() => {
@@ -81,6 +81,10 @@ const Login = () => {
                 </div>
                 <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                     <form className="card-body" onSubmit={handleSubmit(onSubmit)} noValidate>
+                        {
+                            location.state?.from === '/register' &&
+                            <h2 className="text-center text-lg font-semibold text-green-400">You are registered. Now please log in</h2>
+                        }
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Email</span>
@@ -115,7 +119,7 @@ const Login = () => {
                     <button onClick={handleGoogleSignIn} className="btn mx-8 -mt-6 mb-2" disabled={user}><FaGoogle />Log in with Google</button>
                     <button onClick={handleGithubSignIn} className="btn mx-8 mb-3" disabled={user}><FaGithub />Log in with GitHub</button>
                     <p className="text-center mb-8">
-                        <Link to='/register' state={location.state} className="label-text-alt link link-hover">Don&apos;t have an account? Register now</Link>
+                        <Link to='/register' state={location.state?.to} className="label-text-alt link link-hover">Don&apos;t have an account? Register now</Link>
                     </p>
                 </div>
             </div>
