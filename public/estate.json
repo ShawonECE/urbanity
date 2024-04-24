@@ -9,7 +9,8 @@
         "status": "sale",
         "area": "3000 sq ft",
         "location": "Suburban neighborhood, City A",
-        "image": "https://i.ibb.co/4tqTf6s/house1.png",
+        "image": "https://i.ibb.co/6Wsb5yx/house1-reduced.png",
+        "miniImage": "https://i.ibb.co/zVZHzL7/house1-mini.png",
         "facilities": [
             "living room",
             "swimming pool",
@@ -27,7 +28,8 @@
         "status": "sale",
         "area": "2000 sq ft",
         "location": "Downtown, City B",
-        "image": "https://i.ibb.co/QmP8bYf/house2.png",
+        "image": "https://i.ibb.co/71DHHtr/house2-reduced.png",
+        "miniImage": "https://i.ibb.co/qd9Ct73/house2-mini.png",
         "facilities": [
             "living room",
             "kitchen",
@@ -45,7 +47,8 @@
         "status": "rent",
         "area": "1200 sq ft",
         "location": "City Center, City C",
-        "image": "https://i.ibb.co/VBjK3hd/house3.png",
+        "image": "https://i.ibb.co/vBmVGq7/house3-reduced.png",
+        "miniImage": "https://i.ibb.co/283RfbC/house3-mini.png",
         "facilities": [
             "living room",
             "gym",
@@ -63,7 +66,8 @@
         "status": "rent",
         "area": "Shared facilities",
         "location": "Near University Campus, City D",
-        "image": "https://i.ibb.co/bNGxJp4/house4.png",
+        "image": "https://i.ibb.co/p2CCFmS/house4-reduced.png",
+        "miniImage": "https://i.ibb.co/cYVckgZ/house4-mini.png",
         "facilities": [
             "individual bedrooms",
             "study lounge",
@@ -81,7 +85,8 @@
         "status": "rent",
         "area": "Varies",
         "location": "Quiet Suburb, City E",
-        "image": "https://i.ibb.co/D79QKNq/house5.png",
+        "image": "https://i.ibb.co/y6XkMH3/house5-reduced.png",
+        "miniImage": "https://i.ibb.co/34VKyYv/house5-mini.png",
         "facilities": [
             "community center",
             "gardens",
@@ -99,7 +104,8 @@
         "status": "rent",
         "area": "1000 sq ft",
         "location": "Beachfront, City F",
-        "image": "https://i.ibb.co/jgsgyJ2/house6.png",
+        "image": "https://i.ibb.co/YR2sTnN/house6-reduced.png",
+        "miniImage": "https://i.ibb.co/ZfFBfTF/house6-mini.png",
         "facilities": [
             "beach access",
             "fully furnished",
@@ -117,7 +123,8 @@
         "status": "sale",
         "area": "5000 sq ft",
         "location": "Lakefront, City G",
-        "image": "https://i.ibb.co/XthHGyj/house7.png",
+        "image": "https://i.ibb.co/MP1XRD8/house7-reduced.png",
+        "miniImage": "https://i.ibb.co/nPrJb8k/house7-mini.png",
         "facilities": [
             "private dock",
             "home theater",
@@ -135,7 +142,8 @@
         "status": "rent",
         "area": "1800 sq ft",
         "location": "Artsy District, City H",
-        "image": "https://i.ibb.co/q5nmgJD/house8.png",
+        "image": "https://i.ibb.co/mzK6TXx/house8-reduced.png",
+        "miniImage": "https://i.ibb.co/mtS8sGZ/house8-mini.png",
         "facilities": [
             "open floor plan",
             "exposed brick walls",
@@ -153,7 +161,8 @@
         "status": "sale",
         "area": "1500 sq ft",
         "location": "Retirement Community, City I",
-        "image": "https://i.ibb.co/bHqLhf0/house9.png",
+        "image": "https://i.ibb.co/Lk7CBmg/house9-reduced.png",
+        "miniImage": "https://i.ibb.co/RDJzy5s/house9-mini.png",
         "facilities": [
             "golf course access",
             "spa",

@@ -22,7 +22,7 @@ const Login = () => {
         const { email, password } = data;
         signInUser(email, password)
             .then(result => {
-                if (location.state.to) {
+                if (location?.state?.to) {
                     navigate(location.state.to);
                 } else {
                     toast('You have successfully logged in');
@@ -39,7 +39,7 @@ const Login = () => {
     const handleGoogleSignIn = () => {
         signInWithGoogle()
         .then(result => {
-            if (location.state.to) {
+            if (location?.state?.to) {
                 navigate(location.state.to);
             } else {
                 toast('You have successfully logged in');
@@ -50,13 +50,14 @@ const Login = () => {
         })
         .catch(error => {
             setLoading(false);
+            console.error(error);
             toast('Log in failed');
         })
     };
     const handleGithubSignIn = () => {
         signInWithGithub()
         .then(result => {
-            if (location.state.to) {
+            if (location?.state?.to) {
                 navigate(location.state.to);
             } else {
                 toast('You have successfully logged in');
